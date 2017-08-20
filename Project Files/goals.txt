@@ -1,0 +1,28 @@
+Goals
+
+ 
+f. List products in order by order number of each customer.  
+
+ 
+ 
+
+
+Done
+
+a.Enter/update/delete staff detail and roles. - Done
+b. Enter/update/delete customer details. - Done
+c. List staff/customer details and who register which customer. - Done 
+m. List/update/delete supplier details. - Done
+d. List which customer ordered what products, current orders. - Done
+j. List products in each order. - Done
+k. Update/delete products from order (if out of stock). - Done
+l. List/update/delete/ products from category or category. - Done
+e. Enter/update/delete order. 
+h. List credit, debit, balance amounts for each order/bill. 
+i. Enter/update debit/credit amount for each order/bill. 
+
+Changes To be Done
+
+change staff_phone table
+add date picker to DOB in add_staff.php
+duplicate key

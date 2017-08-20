@@ -1,0 +1,799 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.12
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Nov 26, 2015 at 06:58 PM
+-- Server version: 5.6.25
+-- PHP Version: 5.6.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `Inventory_System`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Categories`
+--
+
+CREATE TABLE IF NOT EXISTS `Categories` (
+  `catID` varchar(5) NOT NULL,
+  `catName` varchar(255) NOT NULL,
+  `Description` varchar(2550) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Categories`
+--
+
+INSERT INTO `Categories` (`catID`, `catName`, `Description`) VALUES
+('101', 'Agricultural Products', 'Our industry expertise and sophisticated technology has resulted in the design and manufacture of high quality moisture testing machines and equipments. Our aim to offer our customers with sophisticated technology and advanced testing solutions.'),
+('102', 'Higher Science Education', 'We are engaged in the fast and efficient production of science lab apparatus that are used by students pursuing higher science education. All the science laboratory apparatuses are a combination of sophisticated technology and streamlined production proce'),
+('103', 'Weighing & Dehumidifier', 'We specialize in the supply of high quality weighing balances & dehumifier. Our weighing balances & dehumifier can be customized as per the specifications of our clients to meet their expectations. \nWe specialize in the supply of high quality weighing bal'),
+('104', 'Secondary Science Education', 'Engineering high quality chemistry lab equipment has long been our company''s primary concern. All the chemistry lab equipment are tested for performance prior to shipping which assures accurate, efficient and reliable performance of the Equipment manufact'),
+('105', 'Moisture Testing Machine', 'Our industry expertise and sophisticated technology has resulted in the design and manufacture of high quality moisture testing machines and equipments. Our aim to offer our customers with sophisticated technology and advanced testing solutions. '),
+('106', 'Rice Lab Equipment', 'The Rice Lab Equipment such as rice polisher, rice mill machinery manufactured by us have a high level of precision and accuracy. Our professional engineering team is involved in innovating durable and high-quality products to cater to our clients'' needs.'),
+('107', 'Seed Lab Equipment', 'Backed by vast experience and comprehensive knowledge, we have developed our expertise in the design and development of high quality and precision Seed Lab Equipment. Our wast range of seed lab equipment consist seed dryer, seed germinator, seed blower etc.'),
+('108', 'Chemistry Equipment', 'Engineering high quality chemistry lab equipment has long been our company''s primary concern. All the chemistry lab equipment are tested for performance prior to shipping which assures accurate, efficient and reliable performance of the Equipment manufactured by us. '),
+('109', 'Biology Equipments', 'We have a perfect combination of technology and manpower which enables us to manufacture the best Biology Equipments in the industry. All the materials used for engineering these biology lab equipments are tested/inspected at various stages of production. \r\n'),
+('110', 'General Autoclave Equipment', 'We supply high quality general autoclave equipment. Our quality Labortaory Autoclave Machines and Equipment are tested and verified for durability, accuracy and precision so that our clients get value for their money. \r\n'),
+('111', 'Physics Equipment Â» Electricity', 'We have gained expertise in the field of supplying of high quality physics Equipment for studying electricity. Our comprehensive range includes Digital Ammeter, Electric Bell Demonstration, Westminster Kit, Van-De-Graff Generator etc. '),
+('112', 'Physics Equipment Â» Light &amp; Energy', 'We offer high quality physics Equipment for studying light and energy. Quality is cautiously nurtured at every stage of manufacturing. Right from conception to final delivery, every product undergoes several quality tests. Our exclusive range of physics equipments includes optical disc, optical bench, optical bench wooden superior etc.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Customer`
+--
+
+CREATE TABLE IF NOT EXISTS `Customer` (
+  `custID` varchar(5) NOT NULL,
+  `title` varchar(5) NOT NULL,
+  `fname` varchar(15) NOT NULL,
+  `lname` varchar(15) DEFAULT NULL,
+  `address` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `Staff_staffID` varchar(5) NOT NULL,
+  `Staff_roleID` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Customer`
+--
+
+INSERT INTO `Customer` (`custID`, `title`, `fname`, `lname`, `address`, `email`, `Staff_staffID`, `Staff_roleID`) VALUES
+('101', 'Mr', 'Jerry', 'Stanley', '6245 Westend Street', 'jstanley0@nydailynews.com', '5', '2'),
+('102', 'Dr', 'Lois', 'Stanley', '693 Fulton Circle', 'lstanley1@blogs.com', '12', '1'),
+('103', 'Ms', 'Daniel', 'Morrison', '5939 Park Meadow Place', 'dmorrison2@bloglovin.com', '43', '1'),
+('104', 'Mr', 'Sara', 'Brooks', '9400 Sachtjen Junction', 'sbrooks3@tiny.cc', '22', '2'),
+('105', 'Honor', 'Tammy', 'Powell', '05 Buell Plaza', 'tpowell4@twitter.com', '7', '3'),
+('106', 'Mrs', 'Louise', 'Wells', '6746 Luster Alley', 'lwells5@ameblo.jp', '38', '2'),
+('107', 'Ms', 'Jason', 'Bell', '514 Hazelcrest Plaza', 'jbell6@salon.com', '46', '1'),
+('108', 'Ms', 'Virginia', 'Hudson', '8093 Dorton Lane', 'vhudson7@merriam-webster.com', '45', '3'),
+('109', 'Mrs', 'Donna', 'Nichols', '4703 Victoria Road', 'dnichols8@liveinternet.ru', '1', '3'),
+('110', 'Honor', 'John', 'Williamson', '2 Oneill Park', 'jwilliamson9@japanpost.jp', '30', '1'),
+('111', 'Rev', 'Adam', 'Arnold', '8309 Garrison Crossing', 'aarnolda@themeforest.net', '38', '3'),
+('112', 'Rev', 'Diane', 'Howell', '9537 Chive Terrace', 'dhowellb@hc360.com', '43', '2'),
+('113', 'Rev', 'Eric', 'Mcdonald', '2114 Clarendon Parkway', 'emcdonaldc@ovh.net', '11', '2'),
+('114', 'Dr', 'Bruce', 'Richards', '6344 Londonderry Alley', 'brichardsd@dion.ne.jp', '26', '3'),
+('115', 'Rev', 'Howard', 'Lane', '559 Logan Plaza', 'hlanee@bravesites.com', '6', '1'),
+('116', 'Ms', 'Bruce', 'Henderson', '72627 Shelley Trail', 'bhendersonf@pagesperso-orange.fr', '29', '3'),
+('117', 'Ms', 'Rebecca', 'Johnston', '7810 Pierstorff Trail', 'rjohnstong@earthlink.net', '45', '3'),
+('118', 'Ms', 'Joyce', 'Powell', '1536 Homewood Trail', 'jpowellh@fastcompany.com', '10', '3'),
+('119', 'Mr', 'Norma', 'Shaw', '9 Debra Crossing', 'nshawi@live.com', '12', '2'),
+('120', 'Mrs', 'Jimmy', 'Morrison', '04429 Everett Circle', 'jmorrisonj@guardian.co.uk', '25', '1'),
+('121', 'Honor', 'Fred', 'Larson', '76105 Bay Hill', 'flarsonk@blog.com', '6', '3'),
+('122', 'Mrs', 'Lawrence', 'Meyer', '23990 Magdeline Place', 'lmeyerl@bravesites.com', '19', '3'),
+('123', 'Honor', 'Chris', 'Rodriguez', '1193 Jenifer Crossing', 'crodriguezm@unicef.org', '10', '1'),
+('124', 'Ms', 'Tammy', 'Dixon', '9177 Luster Crossing', 'tdixonn@baidu.com', '2', '3'),
+('125', 'Ms', 'Kimberly', 'Long', '109 Macpherson Place', 'klongo@moonfruit.com', '38', '2'),
+('126', 'Honor', 'Michael', 'Gibson', '36563 Bultman Alley', 'mgibsonp@upenn.edu', '14', '3'),
+('127', 'Mr', 'Paula', 'Sims', '3910 Buell Avenue', 'psimsq@merriam-webster.com', '32', '2'),
+('128', 'Rev', 'Elizabeth', 'Elliott', '2312 Russell Crossing', 'eelliottr@exblog.jp', '32', '3'),
+('129', 'Honor', 'Sean', 'Gonzalez', '7 Maywood Place', 'sgonzalezs@xrea.com', '38', '1'),
+('130', 'Honor', 'Janet', 'Garza', '686 Southridge Park', 'jgarzat@usda.gov', '3', '3'),
+('131', 'Mrs', 'Susan', 'Jenkins', '4 Buhler Plaza', 'sjenkinsu@squidoo.com', '23', '2'),
+('132', 'Honor', 'Douglas', 'Montgomery', '205 Sloan Parkway', 'dmontgomeryv@barnesandnoble.com', '34', '1'),
+('133', 'Dr', 'Cynthia', 'Carr', '45995 Anzinger Park', 'ccarrw@economist.com', '18', '3'),
+('134', 'Dr', 'George', 'Willis', '69823 Mallory Plaza', 'gwillisx@icio.us', '40', '3'),
+('135', 'Dr', 'Andrew', 'Shaw', '3883 Vera Drive', 'ashawy@chron.com', '25', '3'),
+('136', 'Dr', 'Howard', 'Bryant', '7404 Londonderry Hill', 'hbryantz@blogger.com', '37', '3'),
+('137', 'Dr', 'Kelly', 'Flores', '6161 Stuart Way', 'kflores10@dell.com', '37', '1'),
+('138', 'Mr', 'Donald', 'Lopez', '42767 Mayer Hill', 'dlopez11@studiopress.com', '18', '2'),
+('139', 'Dr', 'Jennifer', 'Harris', '123 Grim Road', 'jharris12@cbslocal.com', '32', '1'),
+('140', 'Ms', 'Peter', 'Morales', '8 Prentice Alley', 'pmorales13@msu.edu', '7', '2'),
+('141', 'Rev', 'Frank', 'Chapman', '167 Prairie Rose Crossing', 'fchapman14@slideshare.net', '17', '2'),
+('142', 'Rev', 'Chris', 'Stephens', '043 Caliangt Junction', 'cstephens15@mashable.com', '14', '2'),
+('143', 'Mrs', 'David', 'Wilson', '690 Esker Court', 'dwilson16@wufoo.com', '21', '1'),
+('144', 'Mrs', 'Russell', 'Burns', '43291 Maryland Street', 'rburns17@economist.com', '44', '1'),
+('145', 'Mrs', 'Juan', 'Brooks', '41621 Trailsway Point', 'jbrooks18@cyberchimps.com', '15', '1'),
+('146', 'Ms', 'Henry', 'Butler', '05 Heath Alley', 'hbutler19@privacy.gov.au', '49', '1'),
+('147', 'Dr', 'Nicole', 'Turner', '4 Becker Plaza', 'nturner1a@geocities.jp', '27', '2'),
+('148', 'Dr', 'Frances', 'Welch', '51 Truax Hill', 'fwelch1b@newsvine.com', '3', '3'),
+('149', 'Mrs', 'Janice', 'Martinez', '38 Clove Park', 'jmartinez1c@archive.org', '3', '2'),
+('150', 'Honor', 'Thomas', 'Myers', '157 Northridge Alley', 'tmyers1d@clickbank.net', '33', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Customer_Phone`
+--
+
+CREATE TABLE IF NOT EXISTS `Customer_Phone` (
+  `custID` varchar(5) NOT NULL,
+  `phone` varchar(13) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Customer_Phone`
+--
+
+INSERT INTO `Customer_Phone` (`custID`, `phone`) VALUES
+('101', '+915226373014'),
+('102', '+913235526652'),
+('103', '+911298514963'),
+('104', '+919357039120'),
+('105', '+913344267808'),
+('106', '+914083807399'),
+('107', '+913503976963'),
+('108', '+916587798942'),
+('109', '+914740316953'),
+('110', '+910410174817'),
+('111', '+915056536956'),
+('112', '+917563589918'),
+('113', '+916789792807'),
+('114', '+913890307589'),
+('115', '+913280120605'),
+('116', '+919278094385'),
+('117', '+914493096382'),
+('118', '+918813001670'),
+('119', '+910115409195'),
+('120', '+917925967472'),
+('121', '+912116585849'),
+('122', '+914568188252'),
+('123', '+911734023575'),
+('124', '+915946089153'),
+('125', '+915082676564'),
+('126', '+918908303539'),
+('127', '+917144980012'),
+('128', '+911750046683'),
+('129', '+910987265893'),
+('130', '+915975622879'),
+('131', '+917775358295'),
+('132', '+917716824185'),
+('133', '+912666320856'),
+('134', '+914681052006'),
+('135', '+910291857490'),
+('136', '+910356925288'),
+('137', '+917392260657'),
+('138', '+910242561151'),
+('139', '+911101200764'),
+('140', '+917734467259'),
+('141', '+910132674713'),
+('142', '+912728936421'),
+('143', '+914193483565'),
+('144', '+914953505957'),
+('145', '+918075753581'),
+('146', '+911483327781'),
+('147', '+919718468010'),
+('148', '+910118892579'),
+('149', '+916541868294'),
+('150', '+914986684594');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Orders`
+--
+
+CREATE TABLE IF NOT EXISTS `Orders` (
+  `orderID` varchar(10) NOT NULL,
+  `ordQuant` varchar(6) NOT NULL,
+  `total` varchar(9) NOT NULL,
+  `ordDate` date NOT NULL,
+  `deliDate` date NOT NULL,
+  `Product_productID` varchar(5) NOT NULL,
+  `Customer_custID` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Orders`
+--
+
+INSERT INTO `Orders` (`orderID`, `ordQuant`, `total`, `ordDate`, `deliDate`, `Product_productID`, `Customer_custID`) VALUES
+('1', '5', '$87048.47', '2015-10-13', '2015-08-01', '6034', '121'),
+('10', '20', '$83728.95', '2015-11-05', '2015-09-16', '6006', '118'),
+('11', '1', '$75113.20', '2015-01-26', '2015-11-24', '6009', '107'),
+('12', '5', '$18167.76', '2015-06-30', '2015-09-28', '6016', '151'),
+('13', '10', '$25741.90', '2015-07-11', '2015-07-03', '6042', '146'),
+('14', '10', '$689.95', '2015-10-29', '2015-10-12', '6013', '116'),
+('15', '14', '$99881.98', '2015-10-19', '2015-01-09', '6044', '114'),
+('16', '14', '$68488.82', '2015-07-18', '2015-02-12', '6013', '106'),
+('17', '7', '$7712.39', '2015-11-08', '2015-04-13', '6050', '110'),
+('18', '18', '$75362.69', '2015-10-09', '2015-04-04', '6050', '121'),
+('19', '20', '$11264.47', '2015-01-10', '2015-02-23', '6047', '112'),
+('2', '1', '$41598.93', '2015-09-11', '2015-09-29', '6015', '127'),
+('20', '18', '$59004.31', '2015-09-12', '2015-08-31', '6022', '106'),
+('21', '18', '$50399.34', '2015-11-23', '2015-09-22', '6007', '113'),
+('22', '14', '$15398.67', '2015-06-10', '2015-02-21', '6021', '121'),
+('23', '5', '$88363.79', '2015-10-27', '2015-09-25', '6022', '135'),
+('24', '14', '$70462.36', '2015-10-08', '2015-02-16', '6034', '110'),
+('25', '10', '$14265.10', '2015-04-14', '2015-06-05', '6014', '129'),
+('26', '1', '$13285.98', '2014-12-29', '2015-01-14', '6018', '111'),
+('27', '7', '$74286.93', '2014-12-20', '2015-01-03', '6044', '110'),
+('28', '7', '$97460.44', '2014-12-29', '2015-01-01', '6022', '138'),
+('29', '5', '$99070.39', '2015-02-19', '2015-09-23', '6037', '105'),
+('3', '18', '$67574.84', '2015-01-08', '2015-04-08', '6004', '116'),
+('30', '7', '$4574.44', '2015-03-20', '2015-11-21', '6009', '131'),
+('31', '5', '$41171.52', '2015-06-23', '2015-06-02', '6016', '117'),
+('32', '20', '$54664.05', '2015-10-17', '2015-01-26', '6029', '102'),
+('33', '18', '$49410.08', '2015-09-17', '2015-08-09', '6024', '135'),
+('34', '18', '$12760.92', '2014-12-26', '2015-10-10', '6006', '139'),
+('35', '7', '$71544.20', '2015-07-05', '2015-08-09', '6022', '123'),
+('36', '14', '$92980.91', '2015-09-03', '2015-10-02', '6004', '150'),
+('37', '14', '$62209.68', '2015-05-22', '2015-10-26', '6033', '113'),
+('38', '5', '$11676.20', '2015-10-06', '2015-10-15', '6032', '112'),
+('39', '20', '$13970.99', '2015-08-28', '2015-02-15', '6045', '120'),
+('4', '1', '$61498.73', '2015-04-06', '2015-01-04', '6008', '122'),
+('40', '5', '$20736.21', '2015-06-19', '2015-07-02', '6041', '102'),
+('41', '10', '$6027.88', '2015-02-24', '2015-03-12', '6029', '119'),
+('42', '20', '$549.12', '2015-11-04', '2015-03-27', '6005', '111'),
+('43', '10', '$97562.87', '2015-04-10', '2015-08-16', '6007', '116'),
+('44', '5', '$78247.60', '2015-05-16', '2015-03-15', '6033', '103'),
+('45', '14', '$54815.82', '2015-04-27', '2015-06-07', '6046', '141'),
+('46', '14', '$83948.52', '2015-10-07', '2015-10-13', '6045', '121'),
+('47', '18', '$43601.98', '2015-03-02', '2015-02-25', '6007', '122'),
+('48', '18', '$60915.08', '2015-01-27', '2015-08-27', '6008', '108'),
+('49', '10', '$11571.81', '2015-05-03', '2015-01-17', '6029', '133'),
+('5', '10', '$34862.39', '2015-07-16', '2015-03-15', '6023', '127'),
+('50', '7', '$49252.29', '2015-02-24', '2015-07-17', '6049', '149'),
+('6', '18', '$26164.04', '2015-07-22', '2015-02-17', '6006', '101'),
+('7', '20', '$98447.67', '2014-11-30', '2015-11-06', '6001', '144'),
+('8', '10', '$57146.97', '2015-05-04', '2015-07-04', '6004', '114'),
+('9', '7', '$4155.52', '2015-02-04', '2015-05-10', '6045', '101');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Payment`
+--
+
+CREATE TABLE IF NOT EXISTS `Payment` (
+  `billno` varchar(5) NOT NULL,
+  `paytype` varchar(255) NOT NULL,
+  `CrdAmount` varchar(9) DEFAULT NULL,
+  `DrAmount` varchar(9) DEFAULT NULL,
+  `payDueDate` date DEFAULT NULL,
+  `CrdDate` date DEFAULT NULL,
+  `DrDate` date DEFAULT NULL,
+  `Order_orderID` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Payment`
+--
+
+INSERT INTO `Payment` (`billno`, `paytype`, `CrdAmount`, `DrAmount`, `payDueDate`, `CrdDate`, `DrDate`, `Order_orderID`) VALUES
+('1001', 'mastercard', '$32323.82', '$68986.23', '2015-06-29', '2015-06-20', '2015-08-04', '9'),
+('1002', 'bankcard', '$73150.91', '$33744.20', '2015-11-23', '2015-07-04', '2015-07-25', '48'),
+('1003', 'jcb', '$9402.94', '$11914.02', '2014-12-10', '2015-09-27', '2015-09-07', '28'),
+('1004', 'switch', '$8754.81', '$8190.93', '2015-05-20', '2015-03-16', '2015-03-05', '8'),
+('1005', 'jcb', '$13484.97', '$24867.50', '2014-12-07', '2014-12-27', '2015-06-12', '4'),
+('1006', 'mastercard', '$45648.19', '$84204.53', '2015-09-18', '2015-07-25', '2015-06-06', '41'),
+('1007', 'diners-club-enroute', '$41069.93', '$32145.19', '2015-06-16', '2015-02-07', '2015-04-29', '15'),
+('1008', 'jcb', '$46640.68', '$65313.80', '2015-07-19', '2014-12-27', '2015-07-21', '33'),
+('1009', 'jcb', '$65734.12', '$6663.09', '2015-04-02', '2015-11-24', '2015-10-14', '50'),
+('1010', 'maestro', '$14933.93', '$62666.51', '2015-04-09', '2015-10-23', '2015-04-26', '27'),
+('1011', 'diners-club-enroute', '$35144.73', '$12429.83', '2015-07-06', '2015-10-21', '2015-09-13', '4'),
+('1012', 'laser', '$19735.85', '$854.23', '2015-11-01', '2015-08-24', '2015-06-14', '33'),
+('1013', 'visa', '$1167.57', '$72090.54', '2015-03-12', '2015-09-09', '2015-10-22', '29'),
+('1014', 'bankcard', '$74143.90', '$97178.86', '2015-06-15', '2015-05-11', '2015-11-22', '47'),
+('1015', 'diners-club-enroute', '$45416.48', '$49100.43', '2015-03-24', '2015-09-19', '2015-06-12', '46'),
+('1016', 'diners-club-carte-blanche', '$94950.94', '$21616.73', '2014-12-09', '2014-12-02', '2015-10-11', '18'),
+('1017', 'bankcard', '$61415.19', '$1656.44', '2015-09-21', '2015-07-02', '2015-09-19', '31'),
+('1018', 'laser', '$78051.28', '$64633.06', '2015-11-04', '2015-06-06', '2015-11-14', '12'),
+('1019', 'jcb', '$44708.27', '$49589.66', '2015-05-04', '2015-06-16', '2015-07-01', '46'),
+('1020', 'diners-club-carte-blanche', '$40298.10', '$22542.00', '2015-05-02', '2015-06-23', '2015-04-14', '19'),
+('1021', 'switch', '$44054.67', '$67955.94', '2015-08-31', '2015-10-06', '2015-02-20', '46'),
+('1022', 'jcb', '$10755.80', '$46493.52', '2015-06-24', '2015-01-18', '2015-05-19', '43'),
+('1023', 'jcb', '$27027.46', '$71094.51', '2014-12-05', '2015-02-01', '2015-01-29', '31'),
+('1024', 'jcb', '$48105.77', '$9229.49', '2015-01-01', '2015-04-04', '2015-10-16', '30'),
+('1025', 'jcb', '$68617.00', '$95350.03', '2015-04-13', '2015-03-15', '2015-08-23', '22'),
+('1026', 'jcb', '$19438.87', '$88959.45', '2015-02-07', '2015-07-09', '2015-06-02', '34'),
+('1027', 'instapayment', '$59188.95', '$98801.28', '2015-09-18', '2015-10-07', '2015-02-16', '37'),
+('1028', 'mastercard', '$24439.28', '$6992.93', '2015-01-01', '2015-09-05', '2015-02-27', '13'),
+('1029', 'americanexpress', '$57990.36', '$86638.03', '2015-10-02', '2015-08-15', '2015-01-18', '8'),
+('1030', 'switch', '$98870.07', '$56412.01', '2015-09-27', '2015-03-21', '2015-09-03', '37'),
+('1031', 'mastercard', '$47155.06', '$18849.07', '2015-09-30', '2015-01-14', '2014-12-07', '35'),
+('1032', 'jcb', '$269.41', '$92080.44', '2015-04-08', '2015-02-04', '2015-06-07', '18'),
+('1033', 'jcb', '$39886.15', '$92543.72', '2015-10-14', '2015-03-18', '2015-07-05', '27'),
+('1034', 'maestro', '$57042.17', '$89101.65', '2015-08-07', '2015-01-17', '2015-03-12', '47'),
+('1035', 'china-unionpay', '$83702.44', '$44184.31', '2015-10-29', '2015-08-28', '2015-04-19', '6'),
+('1036', 'jcb', '$97303.79', '$80187.90', '2015-04-25', '2015-03-12', '2015-06-14', '26'),
+('1037', 'jcb', '$6884.30', '$48811.63', '2015-10-02', '2015-05-15', '2015-11-17', '48'),
+('1038', 'jcb', '$17856.63', '$49767.49', '2015-07-21', '2015-04-07', '2015-11-04', '46'),
+('1039', 'jcb', '$27068.01', '$37648.59', '2015-03-12', '2015-01-07', '2015-08-16', '10'),
+('1040', 'americanexpress', '$10158.14', '$28480.81', '2015-09-05', '2015-03-24', '2014-12-13', '20'),
+('1041', 'americanexpress', '$86669.71', '$8512.94', '2015-07-29', '2015-09-27', '2015-04-07', '4'),
+('1042', 'jcb', '$47942.69', '$40626.35', '2015-06-03', '2014-12-27', '2015-02-03', '21'),
+('1043', 'bankcard', '$17888.10', '$35488.05', '2015-11-07', '2015-02-16', '2015-04-24', '48'),
+('1044', 'laser', '$20562.16', '$14157.33', '2015-04-06', '2015-09-19', '2015-10-29', '33'),
+('1045', 'diners-club-enroute', '$63538.93', '$84841.23', '2015-02-14', '2015-04-12', '2015-06-16', '10'),
+('1046', 'laser', '$99160.12', '$28974.19', '2015-08-08', '2015-01-07', '2015-05-18', '30'),
+('1047', 'jcb', '$95909.03', '$40263.58', '2014-12-13', '2015-08-05', '2014-12-12', '41'),
+('1048', 'jcb', '$75166.82', '$71878.00', '2015-05-25', '2014-12-04', '2015-06-23', '8'),
+('1049', 'diners-club-carte-blanche', '$25219.23', '$18862.54', '2014-11-30', '2015-05-09', '2015-02-03', '21'),
+('1050', 'bankcard', '$48246.11', '$20109.57', '2015-06-27', '2015-03-23', '2015-06-06', '39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Product`
+--
+
+CREATE TABLE IF NOT EXISTS `Product` (
+  `productID` varchar(5) NOT NULL,
+  `Pname` varchar(45) NOT NULL,
+  `uInStock` varchar(11) NOT NULL,
+  `uPrice` varchar(9) NOT NULL,
+  `USP` varchar(9) NOT NULL,
+  `qPerUnit` varchar(4) NOT NULL,
+  `uSize` varchar(1) NOT NULL,
+  `uWeight` varchar(4) NOT NULL,
+  `uInOrder` varchar(11) NOT NULL,
+  `Supplier_supplierID` varchar(5) NOT NULL,
+  `Category_catID` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Product`
+--
+
+INSERT INTO `Product` (`productID`, `Pname`, `uInStock`, `uPrice`, `USP`, `qPerUnit`, `uSize`, `uWeight`, `uInOrder`, `Supplier_supplierID`, `Category_catID`) VALUES
+('6001', 'Economy Digital Moisture Meter', '100', '$74309.14', '$47050.07', '5', 'M', '6', '4', '1044', '110'),
+('6002', 'Data Logging Universal Handy Moisture Testing', '650', '$74644.72', '$32589.28', '7', 'L', '9', '100', '1049', '108'),
+('6003', 'Field Moisture Testing Machine', '1000', '$85064.50', '$66841.17', '9', 'L', '10', '100', '1037', '105'),
+('6004', 'Standard Calibrator', '950', '$71233.97', '$48367.08', '3', 'S', '6', '30', '1035', '105'),
+('6005', 'Universal Moisture Testing Machine', '650', '$48177.56', '$65529.31', '10', 'L', '5', '5', '1009', '109'),
+('6006', 'Moisture Meter', '950', '$62402.95', '$50216.49', '5', 'M', '1', '30', '1042', '101'),
+('6007', 'Digital & Humidity Indicator', '90', '$17300.78', '$3848.68', '3', 'L', '9', '2', '1039', '103'),
+('6008', 'Advanced Analysis KIT', '1000', '$15252.62', '$66589.63', '7', 'L', '2', '3', '1042', '101'),
+('6009', 'Rice Sheller', '600', '$6201.07', '$62119.26', '2', 'M', '7', '45', '1004', '101'),
+('6010', 'Rice Polisher (with timer)', '300', '$1749.52', '$20071.49', '6', 'S', '5', '4', '1019', '112'),
+('6011', 'Rice Miller Mc Gill Type', '250', '$25475.63', '$11649.66', '6', 'S', '6', '1', '1049', '107'),
+('6012', 'Rice Sizing Device', '90', '$73312.59', '$76853.33', '4', 'L', '1', '3', '1035', '108'),
+('6013', 'Seed / Grain Divider - Booerner Type', '90', '$26486.95', '$79821.24', '8', 'L', '9', '1', '1044', '109'),
+('6014', 'Seed/Grain Precision Divider - Gamet Type', '100', '$80398.26', '$85373.39', '10', 'L', '8', '45', '1027', '102'),
+('6015', 'Grain Vernier', '90', '$8283.08', '$79199.60', '3', 'L', '1', '66', '1019', '101'),
+('6016', 'Seed Blower -Dacota Type', '1000', '$60990.63', '$99869.42', '10', 'S', '6', '4', '1002', '108'),
+('6017', 'Paddy Cleaner / Grader', '400', '$47697.91', '$86667.61', '6', 'M', '5', '90', '1037', '108'),
+('6018', 'Laboratory Aspirator - Bates Type', '250', '$5976.69', '$80962.98', '6', 'M', '10', '4', '1013', '109'),
+('6019', 'Computerized Seed Counter', '300', '$68642.06', '$35966.06', '8', 'S', '5', '78', '1012', '110'),
+('6020', 'Hot Air Seed Dryer -Cabinet Type', '550', '$7557.15', '$18436.22', '5', 'L', '6', '30', '1036', '107'),
+('6021', 'Seed Germinator', '90', '$70274.88', '$4295.85', '3', 'S', '2', '20', '1014', '102'),
+('6022', 'Seed Sieve Shaker', '100', '$95303.17', '$7769.81', '3', 'L', '2', '15', '1006', '105'),
+('6023', 'Seed Riffle Type Divider- Soil Type', '600', '$73064.90', '$51645.04', '5', 'L', '2', '100', '1042', '102'),
+('6024', 'Illuminated Purity Work Board', '950', '$68083.49', '$56658.23', '7', 'S', '9', '90', '1043', '102'),
+('6025', 'Kerr Effect Experiment Kit', '600', '$65161.58', '$59437.53', '4', 'M', '5', '90', '1048', '110'),
+('6026', 'Newton''s Ring Experiment Kit', '250', '$61782.86', '$22615.00', '8', 'S', '6', '2', '1038', '101'),
+('6027', 'Fresnel Bi prism Experiment Kit', '1000', '$7150.97', '$45548.99', '9', 'S', '8', '15', '1006', '112'),
+('6028', 'Spectroscopy Experiment Kit', '1000', '$20246.93', '$94536.43', '6', 'S', '5', '30', '1004', '107'),
+('6029', 'Michelson Interferometer', '650', '$25179.36', '$92584.04', '10', 'L', '4', '5', '1041', '111'),
+('6030', 'Electronic Plug-In Kit', '100', '$57726.14', '$28428.50', '3', 'M', '7', '10', '1028', '101'),
+('6031', 'Advanced Polarimeter Experiment Kit', '550', '$37776.86', '$11022.87', '8', 'S', '2', '78', '1032', '112'),
+('6032', 'Milikan Oil Drop Experiment', '90', '$65000.21', '$30211.91', '4', 'S', '9', '15', '1012', '106'),
+('6033', 'Rubber Stoppers / Corks', '90', '$82401.72', '$14418.51', '7', 'L', '8', '2', '1031', '111'),
+('6034', 'Spirit Lamp / Mecker Burner', '600', '$51057.45', '$40996.74', '9', 'S', '3', '35', '1021', '109'),
+('6035', 'Water Tap / Gas Tap', '250', '$97453.95', '$87140.71', '3', 'S', '2', '2', '1049', '107'),
+('6036', 'Flask Conical', '650', '$4717.49', '$93964.36', '10', 'S', '3', '66', '1039', '112'),
+('6037', 'Volumetric & Flat Bottom', '600', '$59055.72', '$2979.14', '3', 'L', '3', '20', '1010', '106'),
+('6038', 'Klipp''s Apparatus', '90', '$73961.85', '$6888.78', '4', 'S', '3', '3', '1037', '107'),
+('6039', 'Vaccum Desiccator / Test Tube Rack', '100', '$41574.83', '$42832.52', '7', 'L', '5', '10', '1047', '112'),
+('6040', 'Spectra Set', '150', '$95017.38', '$51173.56', '3', 'M', '10', '3', '1010', '112'),
+('6041', 'Graphite Model', '100', '$95711.13', '$49736.85', '6', 'S', '9', '45', '1049', '111'),
+('6042', 'Interscale Demonstration', '250', '$16569.45', '$6057.28', '4', 'M', '5', '1', '1008', '106'),
+('6043', 'Digital Ammeter', '600', '$13970.40', '$39235.29', '3', 'S', '7', '15', '1036', '106'),
+('6044', 'Westminster Kit', '650', '$97846.36', '$17154.31', '10', 'M', '9', '66', '1019', '102'),
+('6045', 'Electric Bell Demonstration', '650', '$73811.81', '$66040.96', '4', 'L', '9', '45', '1032', '108'),
+('6046', 'Van-De-Graff Generator', '700', '$10115.59', '$27116.82', '6', 'S', '2', '4', '1038', '107'),
+('6047', 'Solenoid', '150', '$71475.98', '$67249.96', '6', 'M', '7', '66', '1006', '104'),
+('6048', 'Demountable Transformer', '100', '$12947.33', '$38622.75', '3', 'L', '9', '100', '1035', '108'),
+('6049', 'Wimshurt Machine', '300', '$12143.15', '$14301.77', '5', 'L', '10', '35', '1025', '110'),
+('6050', 'Optical Bench Wooden Superior', '100', '$32446.10', '$43000.51', '10', 'L', '5', '2', '1037', '109');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Staff`
+--
+
+CREATE TABLE IF NOT EXISTS `Staff` (
+  `staffID` varchar(5) NOT NULL,
+  `roleID` varchar(5) NOT NULL,
+  `title` varchar(5) NOT NULL,
+  `fname` varchar(15) NOT NULL,
+  `lname` varchar(15) NOT NULL,
+  `username` varchar(15) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `roleName` varchar(15) NOT NULL,
+  `gender` varchar(1) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `DOB` date NOT NULL,
+  `last_login` date NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Staff`
+--
+
+INSERT INTO `Staff` (`staffID`, `roleID`, `title`, `fname`, `lname`, `username`, `password`, `roleName`, `gender`, `address`, `email`, `DOB`, `last_login`, `image`) VALUES
+('1', '1', 'Mr.', 'Admin', 'Admin', 'Admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', 'M', 'Qwertyscxcxssdfdd', 'Admin@abc.com', '1980-11-07', '2015-11-26', 'no_image.jpg'),
+('10', '2', 'Honor', 'James', 'Robertson', 'jrobertson9', 'S4dnTX', 'Software Test E', 'M', '38 Old Gate Trail', 'jrobertson9@gov.uk', '1982-10-01', '2048-02-16', 'no_image.jpg'),
+('11', '1', 'Honor', 'Harold', 'Cunningham', 'hcunninghama', '225nQqAAayzP', 'Tax Accountant', 'M', '2 Wayridge Crossing', 'hcunninghama@umn.edu', '1980-04-13', '2043-08-17', 'no_image.jpg'),
+('12', '1', 'Dr', 'Harold', 'Robertson', 'hrobertsonb', 'mVSxUon4a', 'Database Admini', 'M', '631 Talmadge Circle', 'hrobertsonb@hibu.com', '1985-12-17', '2100-10-14', 'no_image.jpg'),
+('13', '2', 'Honor', 'Janice', 'Ryan', 'jryanc', '2nYNBJfO9mp', 'Computer System', 'F', '87294 Starling Hill', 'jryanc@studiopress.com', '1964-03-09', '2039-02-01', 'no_image.jpg'),
+('14', '2', 'Honor', 'Doris', 'Perry', 'dperryd', '7mlgKD3W', 'Director of Sal', 'F', '9 Dakota Hill', 'dperryd@1und1.de', '1978-08-07', '2042-11-30', 'no_image.jpg'),
+('15', '3', 'Mr', 'Betty', 'Palmer', 'bpalmere', 'KQE9LYWTqJQb', 'Compensation An', 'F', '373 Maple Wood Crossing', 'bpalmere@latimes.com', '1964-09-14', '2053-07-30', 'no_image.jpg'),
+('16', '2', 'Ms', 'Norma', 'Bowman', 'nbowmanf', '0IFiHGfGG', 'Senior Cost Acc', 'F', '54 Sutteridge Junction', 'nbowmanf@sun.com', '1966-05-21', '2018-12-18', 'no_image.jpg'),
+('17', '1', 'Dr', 'Earl', 'Arnold', 'earnoldg', 'H7VI7dsE8', 'Marketing Manag', 'M', '382 Rockefeller Park', 'earnoldg@is.gd', '1964-12-20', '2087-11-02', 'no_image.jpg'),
+('18', '1', 'Ms', 'Sandra', 'Baker', 'sbakerh', '4DEYdPpaI5uU', 'Senior Sales As', 'F', '3594 Golf View Avenue', 'sbakerh@webeden.co.uk', '1984-06-23', '2092-06-24', 'no_image.jpg'),
+('19', '1', 'Dr', 'Henry', 'Hart', 'hharti', 'mvmsJdDsLqC', 'Environmental S', 'M', '07272 Northwestern Court', 'hharti@storify.com', '1980-02-08', '2083-01-29', 'no_image.jpg'),
+('2', '2', 'Mrs.', 'User1', 'U', 'user1', '12dea96fec20593566ab75692c9949596833adc9', 'Manager', 'F', 'werty', 'user1@bcd.com', '0000-00-00', '2015-11-22', 'no_image.jpg'),
+('20', '1', 'Rev', 'Steve', 'Welch', 'swelchj', 'hkuQ3iU17T', 'Dental Hygienis', 'M', '3650 Kennedy Point', 'swelchj@youku.com', '1961-12-04', '2041-05-18', 'no_image.jpg'),
+('21', '1', 'Dr', 'Diana', 'Morrison', 'dmorrisonk', 'lCITJeyx', 'Compensation An', 'F', '447 Delladonna Avenue', 'dmorrisonk@ucsd.edu', '1984-05-11', '2083-05-27', 'no_image.jpg'),
+('22', '1', 'Mrs', 'Carlos', 'Young', 'cyoungl', 'Ha7Ry7sx29', 'Account Coordin', 'M', '59 Myrtle Street', 'cyoungl@hostgator.com', '1962-01-28', '2033-12-18', 'no_image.jpg'),
+('23', '3', 'Mrs', 'Albert', 'Gardner', 'agardnerm', 'H17fnYqL', 'Business System', 'M', '0 Westerfield Junction', 'agardnerm@fema.gov', '1978-08-16', '2062-01-18', 'no_image.jpg'),
+('24', '1', 'Rev', 'Sharon', 'Lawson', 'slawsonn', '3R895tPMLAWk', 'Senior Editor', 'F', '1028 Pleasure Crossing', 'slawsonn@hatena.ne.jp', '1976-12-02', '2060-01-17', 'no_image.jpg'),
+('25', '1', 'Mrs', 'Brenda', 'Howard', 'bhowardo', 'QXo2KRJJ5', 'Occupational Th', 'F', '90232 Transport Plaza', 'bhowardo@bloomberg.com', '1960-08-08', '2093-08-24', 'no_image.jpg'),
+('26', '1', 'Mrs', 'Stephanie', 'Sanchez', 'ssanchezp', 'WEQugNhv', 'Sales Represent', 'F', '87047 Fair Oaks Lane', 'ssanchezp@google.ca', '1991-05-12', '2056-08-08', 'no_image.jpg'),
+('27', '1', 'Mr', 'Cheryl', 'Day', 'cdayq', '80HmWryEyN0Z', 'Structural Anal', 'F', '535 Pankratz Junction', 'cdayq@netscape.com', '1987-12-20', '2094-07-16', 'no_image.jpg'),
+('28', '3', 'Ms', 'Karen', 'Ruiz', 'kruizr', 'GkYxlhor', 'Geological Engi', 'F', '0 Ronald Regan Way', 'kruizr@wikispaces.com', '1977-03-02', '2087-11-18', 'no_image.jpg'),
+('29', '2', 'Dr', 'Lillian', 'Washington', 'lwashingtons', 'iLEOfntQ', 'Environmental T', 'F', '315 Delladonna Drive', 'lwashingtons@loc.gov', '1986-01-25', '2040-12-22', 'no_image.jpg'),
+('3', '3', 'Rev', 'Andrea', 'Cooper', 'acooper2', 'kOGAoh', 'Professor', 'F', '05468 Mccormick Hill', 'acooper2@abc.net.au', '1973-05-07', '2101-03-28', 'no_image.jpg'),
+('30', '2', 'Ms', 'Helen', 'Bailey', 'hbaileyt', 'GuYYUKq', 'Project Manager', 'F', '155 Warrior Park', 'hbaileyt@cargocollective.com', '1967-06-18', '2043-08-08', 'no_image.jpg'),
+('31', '1', 'Rev', 'Howard', 'Spencer', 'hspenceru', 'sWATrWQ', 'Speech Patholog', 'M', '6951 Clarendon Point', 'hspenceru@bravesites.com', '1974-10-29', '2058-11-06', 'no_image.jpg'),
+('32', '3', 'Rev', 'Michelle', 'Gordon', 'mgordonv', 'f8ZlFqkzRe', 'Data Coordiator', 'F', '682 Forest Dale Parkway', 'mgordonv@typepad.com', '1985-11-22', '2101-09-19', 'no_image.jpg'),
+('33', '3', 'Rev', 'Beverly', 'Phillips', 'bphillipsw', 'Ib4AwR7hVG', 'Statistician II', 'F', '8 Thierer Place', 'bphillipsw@exblog.jp', '1966-05-12', '2025-06-02', 'no_image.jpg'),
+('34', '2', 'Honor', 'Larry', 'Duncan', 'lduncanx', 'ezBRt6E', 'Software Consul', 'M', '9 Schmedeman Hill', 'lduncanx@zimbio.com', '1977-06-09', '2032-12-24', 'no_image.jpg'),
+('35', '2', 'Mrs', 'Michelle', 'Gordon', 'mgordony', 'WL8OeLREiHo', 'Social Worker', 'F', '81 Welch Hill', 'mgordony@about.me', '1988-06-12', '2048-12-26', 'no_image.jpg'),
+('36', '3', 'Mrs', 'Annie', 'Adams', 'aadamsz', 'k4LLdOfW', 'Safety Technici', 'F', '926 Spenser Plaza', 'aadamsz@bing.com', '1974-06-25', '2045-03-27', 'no_image.jpg'),
+('37', '1', 'Mrs', 'Daniel', 'Campbell', 'dcampbell10', 'WVY1XrNoCm', 'Teacher', 'M', '659 Vera Point', 'dcampbell10@example.com', '1971-04-02', '2016-02-13', 'no_image.jpg'),
+('38', '3', 'Ms', 'Jane', 'Martinez', 'jmartinez11', '0cje1p0', 'Editor', 'F', '1 Declaration Parkway', 'jmartinez11@people.com.cn', '1960-05-26', '2048-06-30', 'no_image.jpg'),
+('39', '3', 'Ms', 'Craig', 'Henry', 'chenry12', 'Tj9dVY', 'VP Sales', 'M', '51324 Stang Trail', 'chenry12@marriott.com', '1965-08-26', '2095-12-22', 'no_image.jpg'),
+('4', '1', 'Rev', 'Terry', 'Roberts', 'troberts3', 'DeyIQGVq40Po', 'Executive Secre', 'M', '5 Oxford Lane', 'troberts3@instagram.com', '1989-01-31', '2039-02-25', 'no_image.jpg'),
+('40', '1', 'Honor', 'Diana', 'Hawkins', 'dhawkins13', 'eGtufQQ', 'Clinical Specia', 'F', '62910 Marcy Plaza', 'dhawkins13@usgs.gov', '1980-05-29', '2051-05-31', 'no_image.jpg'),
+('41', '3', 'Rev', 'Heather', 'Martinez', 'hmartinez14', 'tBHdLHmT8D', 'Payment Adjustm', 'F', '733 Almo Point', 'hmartinez14@cafepress.com', '1971-11-24', '2062-05-22', 'no_image.jpg'),
+('42', '1', 'Dr', 'Angela', 'Sims', 'asims15', 'VFuhJV9N', 'Engineer IV', 'F', '28 Pierstorff Terrace', 'asims15@vimeo.com', '1989-11-02', '2051-03-19', 'no_image.jpg'),
+('43', '1', 'Mr', 'Amanda', 'Gordon', 'agordon16', '4P1zWgObX', 'Accounting Assi', 'F', '34 Hudson Park', 'agordon16@feedburner.com', '1993-10-16', '2058-09-04', 'no_image.jpg'),
+('44', '2', 'Mrs', 'Angela', 'Simpson', 'asimpson17', 'TojGNO73eBe', 'Structural Anal', 'F', '2990 Sauthoff Junction', 'asimpson17@aol.com', '1984-12-24', '2088-11-01', 'no_image.jpg'),
+('45', '1', 'Mr', 'Jonathan', 'Edwards', 'jedwards18', 'yz8Tki3qpzw', 'Chief Design En', 'M', '5719 Lawn Trail', 'jedwards18@disqus.com', '1977-08-18', '2059-05-30', 'no_image.jpg'),
+('46', '3', 'Mrs', 'Dorothy', 'Wagner', 'dwagner19', 'vgkDC1Av4gJI', 'Sales Associate', 'F', '0871 Florence Court', 'dwagner19@google.ca', '1961-06-29', '2072-08-06', 'no_image.jpg'),
+('47', '3', 'Mr', 'Ashley', 'Nelson', 'anelson1a', 'o5zHLsa87EZ', 'Staff Scientist', 'F', '08 Vidon Center', 'anelson1a@soundcloud.com', '1984-03-16', '2100-08-17', 'no_image.jpg'),
+('48', '2', 'Mrs', 'Juan', 'Jacobs', 'jjacobs1b', 'aLkyHdXwWZ', 'Account Represe', 'M', '88 Melvin Place', 'jjacobs1b@salon.com', '1974-04-30', '2024-09-27', 'no_image.jpg'),
+('49', '3', 'Mrs', 'Ruby', 'Mccoy', 'rmccoy1c', '402y1Ftn', 'Sales Associate', 'F', '72 Almo Crossing', 'rmccoy1c@mac.com', '1993-09-30', '2028-09-15', 'no_image.jpg'),
+('5', '3', 'Ms', 'George', 'Meyer', 'gmeyer4', 'IXKPGff8Y', 'Web Designer II', 'M', '940 Mcguire Center', 'gmeyer4@businessweek.com', '1988-09-17', '2063-09-29', 'no_image.jpg'),
+('50', '2', 'Honor', 'Brandon', 'Murphy', 'bmurphy1d', 'gAOMOj26RcnF', 'Registered Nurs', 'M', '73849 Blue Bill Park Junction', 'bmurphy1d@sbwire.com', '1973-07-22', '2101-12-12', 'no_image.jpg'),
+('6', '3', 'Dr', 'Mark', 'Kennedy', 'mkennedy5', 'FtZN0H4', 'Staff Scientist', 'M', '3088 Sherman Parkway', 'mkennedy5@sogou.com', '1985-03-24', '2061-07-29', 'no_image.jpg'),
+('7', '3', 'Honor', 'Amanda', 'Warren', 'awarren6', 'JxifrgZnJFSO', 'Software Test E', 'F', '1037 Autumn Leaf Avenue', 'awarren6@usa.gov', '1969-10-15', '2078-03-15', 'no_image.jpg'),
+('8', '1', 'Mr', 'Antonio', 'George', 'ageorge7', 'c6G3DjAAHm', 'Design Engineer', 'M', '53 John Wall Lane', 'ageorge7@chronoengine.com', '1980-08-25', '2030-06-18', 'no_image.jpg'),
+('9', '2', 'Honor', 'Ann', 'Cook', 'acook8', 'DLS9UzxmqpzP', 'Quality Control', 'F', '7771 Mifflin Parkway', 'acook8@bandcamp.com', '1985-09-25', '2084-12-05', 'no_image.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Staff_Phone`
+--
+
+CREATE TABLE IF NOT EXISTS `Staff_Phone` (
+  `staffID` varchar(5) NOT NULL,
+  `Phone` varchar(13) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Staff_Phone`
+--
+
+INSERT INTO `Staff_Phone` (`staffID`, `Phone`) VALUES
+('1', '+910603815723'),
+('10', '+910525179753'),
+('11', '+910103116238'),
+('12', '+913129946719'),
+('13', '+915347064348'),
+('14', '+912044752521'),
+('15', '+915242131203'),
+('16', '+912435198716'),
+('17', '+910437730023'),
+('18', '+918649600579'),
+('19', '+916036160414'),
+('2', '+912475246342'),
+('20', '+911881908936'),
+('21', '+915428875504'),
+('22', '+915464956826'),
+('23', '+917503077537'),
+('24', '+918316167544'),
+('25', '+910316708493'),
+('26', '+911174614433'),
+('27', '+913596432153'),
+('28', '+912747373439'),
+('29', '+918466715221'),
+('3', '+915583689894'),
+('30', '+914260920866'),
+('31', '+915109594154'),
+('32', '+912004818555'),
+('33', '+914731779939'),
+('34', '+916989904502'),
+('35', '+912268495375'),
+('36', '+919854620019'),
+('37', '+910684292550'),
+('38', '+913076063127'),
+('39', '+916330707625'),
+('4', '+919368227012'),
+('40', '+910333772831'),
+('41', '+911456707831'),
+('42', '+912785573044'),
+('43', '+917070484780'),
+('44', '+913333404989'),
+('45', '+915590530941'),
+('46', '+919003596571'),
+('47', '+910039209461'),
+('48', '+919715093103'),
+('49', '+910175143057'),
+('5', '+919028276634'),
+('50', '+912401789850'),
+('6', '+914060041395'),
+('7', '+916964308179'),
+('8', '+913729955581'),
+('9', '+910984605934');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Supplier`
+--
+
+CREATE TABLE IF NOT EXISTS `Supplier` (
+  `supplierID` varchar(5) NOT NULL,
+  `title` varchar(5) NOT NULL,
+  `fname` varchar(15) NOT NULL,
+  `lname` varchar(15) NOT NULL,
+  `address` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Supplier`
+--
+
+INSERT INTO `Supplier` (`supplierID`, `title`, `fname`, `lname`, `address`, `email`) VALUES
+('1001', 'Mrs', 'Mildred', 'Roberts', '767 Mallory Hill', 'mroberts0@plala.or.jp'),
+('1002', 'Mrs', 'Kevin', 'Barnes', '2 Milwaukee Lane', 'kbarnes1@berkeley.edu'),
+('1003', 'Mr', 'Kathleen', 'Murray', '2632 Thompson Lane', 'kmurray2@google.es'),
+('1004', 'Rev', 'Anna', 'Anderson', '9874 Sundown Junction', 'aanderson3@google.co.jp'),
+('1005', 'Ms', 'Nicholas', 'Ford', '52 Cherokee Terrace', 'nford4@bing.com'),
+('1006', 'Mr', 'Louis', 'Walker', '18714 Glacier Hill Hill', 'lwalker5@smugmug.com'),
+('1007', 'Mr', 'Terry', 'Jackson', '74 Kings Park', 'tjackson6@addthis.com'),
+('1008', 'Honor', 'Cynthia', 'Porter', '690 Dorton Pass', 'cporter7@artisteer.com'),
+('1009', 'Honor', 'Mary', 'Chavez', '470 Hallows Street', 'mchavez8@alibaba.com'),
+('1010', 'Mrs', 'Annie', 'Williamson', '413 Arizona Street', 'awilliamson9@com.com'),
+('1011', 'Rev', 'Cynthia', 'Morris', '7508 Hanson Park', 'cmorrisa@twitter.com'),
+('1012', 'Mrs', 'Charles', 'Cole', '3 Rutledge Court', 'ccoleb@disqus.com'),
+('1013', 'Honor', 'Debra', 'Ortiz', '941 Barby Pass', 'dortizc@seattletimes.com'),
+('1014', 'Rev', 'Justin', 'Mccoy', '9 Annamark Road', 'jmccoyd@ycombinator.com'),
+('1015', 'Dr', 'Sean', 'Taylor', '388 Dahle Way', 'staylore@last.fm'),
+('1016', 'Mr', 'Doris', 'Riley', '99458 Oneill Junction', 'drileyf@archive.org'),
+('1017', 'Rev', 'Victor', 'Butler', '56 Fisk Trail', 'vbutlerg@jalbum.net'),
+('1018', 'Dr', 'Kathy', 'Evans', '30 Gateway Center', 'kevansh@ovh.net'),
+('1019', 'Mrs', 'Victor', 'Chavez', '03 Vermont Crossing', 'vchavezi@ted.com'),
+('1020', 'Rev', 'Stephanie', 'Vasquez', '00281 Fisk Pass', 'svasquezj@nydailynews.com'),
+('1021', 'Rev', 'Philip', 'Gordon', '09 Kensington Street', 'pgordonk@ebay.com'),
+('1022', 'Ms', 'Ann', 'Reynolds', '731 Fair Oaks Lane', 'areynoldsl@scientificamerican.com'),
+('1023', 'Honor', 'Henry', 'Wood', '7433 Delaware Avenue', 'hwoodm@nydailynews.com'),
+('1024', 'Mr', 'Carolyn', 'Barnes', '528 Bartelt Junction', 'cbarnesn@g.co'),
+('1025', 'Honor', 'Julia', 'Foster', '547 Ludington Court', 'jfostero@techcrunch.com'),
+('1026', 'Mr', 'Ralph', 'Holmes', '1 Washington Parkway', 'rholmesp@hugedomains.com'),
+('1027', 'Rev', 'Steve', 'Rivera', '51216 Coolidge Terrace', 'sriveraq@weebly.com'),
+('1028', 'Dr', 'Amanda', 'Nichols', '862 Spohn Plaza', 'anicholsr@salon.com'),
+('1029', 'Dr', 'Sarah', 'Nelson', '7 Forest Run Junction', 'snelsons@techcrunch.com'),
+('1030', 'Mrs', 'Norma', 'Lawson', '6734 2nd Circle', 'nlawsont@digg.com'),
+('1031', 'Rev', 'Clarence', 'Ryan', '17418 Vidon Center', 'cryanu@globo.com'),
+('1032', 'Mrs', 'Jessica', 'Larson', '01 Bay Plaza', 'jlarsonv@nps.gov'),
+('1033', 'Dr', 'Mildred', 'Nguyen', '0 Scott Crossing', 'mnguyenw@mediafire.com'),
+('1034', 'Mrs', 'Sandra', 'Harrison', '1170 Almo Junction', 'sharrisonx@utexas.edu'),
+('1035', 'Dr', 'Clarence', 'Nichols', '3 Linden Junction', 'cnicholsy@mapy.cz'),
+('1036', 'Dr', 'Michael', 'Morales', '8518 Darwin Place', 'mmoralesz@domainmarket.com'),
+('1037', 'Rev', 'Willie', 'King', '49795 Merry Pass', 'wking10@virginia.edu'),
+('1038', 'Mr', 'Jason', 'Cunningham', '169 Crescent Oaks Drive', 'jcunningham11@patch.com'),
+('1039', 'Ms', 'Howard', 'Griffin', '942 Garrison Court', 'hgriffin12@biglobe.ne.jp'),
+('1040', 'Dr', 'Kimberly', 'Day', '661 Kedzie Pass', 'kday13@bing.com'),
+('1041', 'Ms', 'Karen', 'Rivera', '93 Thierer Circle', 'krivera14@zimbio.com'),
+('1042', 'Rev', 'Lisa', 'Welch', '706 Grover Place', 'lwelch15@fastcompany.com'),
+('1043', 'Mrs', 'Joan', 'Austin', '6989 Maywood Park', 'jaustin16@addtoany.com'),
+('1044', 'Honor', 'Jeffrey', 'Olson', '68431 Muir Point', 'jolson17@shop-pro.jp'),
+('1045', 'Dr', 'Mary', 'Burns', '05270 Forest Run Way', 'mburns18@usatoday.com'),
+('1046', 'Mr', 'Shawn', 'Reid', '28579 4th Crossing', 'sreid19@networkadvertising.org'),
+('1047', 'Mr', 'Martha', 'Hall', '918 3rd Street', 'mhall1a@domainmarket.com'),
+('1048', 'Ms', 'Daniel', 'Murphy', '62016 Eagan Street', 'dmurphy1b@ocn.ne.jp'),
+('1049', 'Ms', 'Evelyn', 'Richards', '2 John Wall Hill', 'erichards1c@nifty.com'),
+('1050', 'Mrs', 'Mary', 'Perkins', '086 Luster Crossing', 'mperkins1d@apple.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Supplier_Phone`
+--
+
+CREATE TABLE IF NOT EXISTS `Supplier_Phone` (
+  `supplierID` varchar(5) NOT NULL,
+  `phone` varchar(13) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Supplier_Phone`
+--
+
+INSERT INTO `Supplier_Phone` (`supplierID`, `phone`) VALUES
+('1001', '+911739408905'),
+('1002', '+915660615903'),
+('1003', '+915938554993'),
+('1004', '+917066269461'),
+('1005', '+918262406228'),
+('1006', '+911041234249'),
+('1007', '+911638355624'),
+('1008', '+914392257981'),
+('1009', '+918777132883'),
+('1010', '+917668335791'),
+('1011', '+914958936716'),
+('1012', '+915483383496'),
+('1013', '+916259029122'),
+('1014', '+915601073390'),
+('1015', '+918355020153'),
+('1016', '+911556007174'),
+('1017', '+913399300609'),
+('1018', '+911441116881'),
+('1019', '+919412256810'),
+('1020', '+912943234832'),
+('1021', '+916167589159'),
+('1022', '+914274633608'),
+('1023', '+919975109959'),
+('1024', '+911772017964'),
+('1025', '+911881116503'),
+('1026', '+912735788118'),
+('1027', '+919944235750'),
+('1028', '+913746444292'),
+('1029', '+914564010045'),
+('1030', '+914714042695'),
+('1031', '+911881239584'),
+('1032', '+915885687278'),
+('1033', '+916223297631'),
+('1034', '+911016255152'),
+('1035', '+914190169767'),
+('1036', '+914303470316'),
+('1037', '+912222838915'),
+('1038', '+910168698071'),
+('1039', '+919543313810'),
+('1040', '+911193962510'),
+('1041', '+916179043512'),
+('1042', '+918755365240'),
+('1043', '+918020680349'),
+('1044', '+915422990567'),
+('1045', '+914148447975'),
+('1046', '+912909799443'),
+('1047', '+917350827534'),
+('1048', '+913790072701'),
+('1049', '+911550545571'),
+('1050', '+913546065689');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Categories`
+--
+ALTER TABLE `Categories`
+  ADD PRIMARY KEY (`catID`);
+
+--
+-- Indexes for table `Customer`
+--
+ALTER TABLE `Customer`
+  ADD PRIMARY KEY (`custID`),
+  ADD KEY `fk_Customer_Staff1_idx` (`Staff_staffID`,`Staff_roleID`);
+
+--
+-- Indexes for table `Customer_Phone`
+--
+ALTER TABLE `Customer_Phone`
+  ADD PRIMARY KEY (`custID`);
+
+--
+-- Indexes for table `Orders`
+--
+ALTER TABLE `Orders`
+  ADD PRIMARY KEY (`orderID`),
+  ADD KEY `fk_Order_Product1_idx` (`Product_productID`),
+  ADD KEY `fk_Order_Customer1_idx` (`Customer_custID`);
+
+--
+-- Indexes for table `Payment`
+--
+ALTER TABLE `Payment`
+  ADD PRIMARY KEY (`billno`),
+  ADD KEY `fk_Payment_Order1_idx` (`Order_orderID`);
+
+--
+-- Indexes for table `Product`
+--
+ALTER TABLE `Product`
+  ADD PRIMARY KEY (`productID`),
+  ADD KEY `fk_Product_Supplier1_idx` (`Supplier_supplierID`),
+  ADD KEY `fk_Product_Category1_idx` (`Category_catID`);
+
+--
+-- Indexes for table `Staff`
+--
+ALTER TABLE `Staff`
+  ADD PRIMARY KEY (`staffID`,`roleID`);
+
+--
+-- Indexes for table `Staff_Phone`
+--
+ALTER TABLE `Staff_Phone`
+  ADD PRIMARY KEY (`staffID`);
+
+--
+-- Indexes for table `Supplier`
+--
+ALTER TABLE `Supplier`
+  ADD PRIMARY KEY (`supplierID`);
+
+--
+-- Indexes for table `Supplier_Phone`
+--
+ALTER TABLE `Supplier_Phone`
+  ADD PRIMARY KEY (`supplierID`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `Customer`
+--
+ALTER TABLE `Customer`
+  ADD CONSTRAINT `fk_Customer_Staff1` FOREIGN KEY (`Staff_staffID`, `Staff_roleID`) REFERENCES `Staff` (`staffID`, `roleID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Customer_Phone`
+--
+ALTER TABLE `Customer_Phone`
+  ADD CONSTRAINT `fk_Customer_Phone_Customer1` FOREIGN KEY (`custID`) REFERENCES `Customer` (`custID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Orders`
+--
+ALTER TABLE `Orders`
+  ADD CONSTRAINT `fk_Order_Customer1` FOREIGN KEY (`Customer_custID`) REFERENCES `Customer` (`custID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Order_Product1` FOREIGN KEY (`Product_productID`) REFERENCES `Product` (`productID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Payment`
+--
+ALTER TABLE `Payment`
+  ADD CONSTRAINT `fk_Payment_Order1` FOREIGN KEY (`Order_orderID`) REFERENCES `orders` (`orderID`) ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
